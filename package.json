@@ -1,0 +1,17 @@
+{
+  "name": "hexlet-fastify",
+  "version": "1.0.0",
+  "description": "test repo to learn how to work with Fastify",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^5.3.3"
+  }
+}
