@@ -9,7 +9,8 @@ app.get("/users", (req, res) => {
 
 app.get("/hello", (req, res) => {
   const name = req.query.name;
-  res.send(name !== undefined ? `Hello, ${name}!` : "Hello, World!");
+  const currentName = name !== undefined ? `Hello, ${name}!` : "Hello, World!";
+  res.send(currentName);
 });
 
 app.post("/users", (req, res) => {
