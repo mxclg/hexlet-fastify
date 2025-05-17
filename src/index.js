@@ -1,6 +1,7 @@
 import fastify from "fastify";
 import view from "@fastify/view";
 import pug from "pug";
+import sanitize from "sanitize-html";
 
 const app = fastify();
 const port = 3000;
@@ -23,6 +24,13 @@ app.get("/hello", (req, res) => {
 app.post("/users/:id/post/:postId", (req, res) => {
   const { id: userId, postId } = req.params;
   res.view("src/views/posts/show.pug", { userId, postId });
+});
+
+app.get("/search", (req, res) => {
+  const id = req.query.id;
+  const safeId = sanitize(id);
+  res.type("html");
+  res.send(`<h1>${safeId}</h1>`);
 });
 
 app.listen({ port }, () => {
