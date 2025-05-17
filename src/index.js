@@ -3,8 +3,8 @@ import fastify from "fastify";
 const app = fastify();
 const port = 3000;
 
-app.get("/users", (req, res) => {
-  res.send("GET /users");
+app.get("/users/:id", (req, res) => {
+  res.send(`User ID: ${req.params.id}`);
 });
 
 app.get("/hello", (req, res) => {
@@ -13,8 +13,8 @@ app.get("/hello", (req, res) => {
   res.send(currentName);
 });
 
-app.post("/users", (req, res) => {
-  res.send("POST /users");
+app.post("/users/:id/post/:postId", (req, res) => {
+  res.send(`User ID: ${req.params.id}; Post ID: ${req.params.postId}`);
 });
 
 app.listen({ port }, () => {
