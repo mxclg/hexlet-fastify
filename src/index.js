@@ -16,8 +16,8 @@ app.get("/users/:id", (req, res) => {
 
 app.get("/hello", (req, res) => {
   const name = req.query.name;
-  const currentName = name !== undefined ? `Hello, ${name}!` : "Hello, World!";
-  res.send(currentName);
+  const message = name ? `Hello, ${name}!` : "Hello, World!";
+  res.view("src/views/hello.pug", { message });
 });
 
 app.post("/users/:id/post/:postId", (req, res) => {
