@@ -10,7 +10,8 @@ await app.register(view, { engine: { pug } });
 app.get("/", (req, res) => res.view("src/views/index.pug"));
 
 app.get("/users/:id", (req, res) => {
-  res.send(`User ID: ${req.params.id}`);
+  const { id } = req.params;
+  res.view("src/views/users/show.pug", { id });
 });
 
 app.get("/hello", (req, res) => {
@@ -20,7 +21,8 @@ app.get("/hello", (req, res) => {
 });
 
 app.post("/users/:id/post/:postId", (req, res) => {
-  res.send(`User ID: ${req.params.id}; Post ID: ${req.params.postId}`);
+  const { id: userId, postId } = req.params;
+  res.view("src/views/posts/show.pug", { userId, postId });
 });
 
 app.listen({ port }, () => {
